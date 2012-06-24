@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[Mejcyn's lair]]></title>
   <link href="http://mejcyn.github.com/atom.xml" rel="self"/>
   <link href="http://mejcyn.github.com/"/>
-  <updated>2012-06-24T21:56:16+02:00</updated>
+  <updated>2012-06-24T22:09:51+02:00</updated>
   <id>http://mejcyn.github.com/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Drga Mejcyn]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+    <entry>
+      
+
+
+
+
+<title type="html"><![CDATA[Hello world]]></title>
+<link href="http://mejcyn.github.com/2012/06/24/hello-world/"/>
+<updated>2012-06-24T22:01:00+02:00</updated>
+<id>http://mejcyn.github.com/2012/06/24/hello-world</id>
+
+      <content type="html"><![CDATA[<p>Does it work?</p>
+<p><a rel="bookmark" href="http://mejcyn.github.com/2012/06/24/hello-world/">&#9875; Permalink</a></p>]]></content>
+    </entry>
   
 </feed>
