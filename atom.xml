@@ -3,7 +3,7 @@
   <title><![CDATA[Mejcyn's lair]]></title>
   <link href="http://mejcyn.github.com/atom.xml" rel="self"/>
   <link href="http://mejcyn.github.com/"/>
-  <updated>2012-08-27T20:58:20+02:00</updated>
+  <updated>2012-08-27T21:05:07+02:00</updated>
   <id>http://mejcyn.github.com/</id>
   <author>
     <name><![CDATA[Drga Mejcyn]]></name>
@@ -92,7 +92,7 @@
 
 <p>Program consists of two .cpp files - <strong>main.cpp</strong> and <strong>convert.cpp</strong>. If <strong>lexical_cast.hpp</strong> header file is included in <strong>convert.hpp</strong> file then it will be indirectly included also in <strong>main.cpp</strong> file.</p>
 
-<p>Furthermore, <strong>lexical_cast.hpp</strong> header file is included also indirectly with <strong>convert.hpp</strong> header file in <strong>convert.cpp</strong> file.</p>
+<p>Furthermore, <strong>lexical_cast.hpp</strong> header file will be included also indirectly with <strong>convert.hpp</strong> header file in <strong>convert.cpp</strong> file.</p>
 
 <p>It means that compiler have to process <strong>lexical_cast.hpp</strong> header file twice - first time for <strong>convert.cpp</strong> file and second time for <strong>main.cpp</strong> file. However compilation of <strong>lexical_cast.hpp</strong> content for <strong>main.cpp</strong> file is useless because no name from <strong>lexical_cast.hpp</strong> header file is ever used in <strong>convert.hpp</strong> header file and in <strong>main.cpp</strong> file.</p>
 
