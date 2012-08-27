@@ -108,6 +108,8 @@ Including Headers in .cpp File
 
 <p>If some header file is needed only in the .cpp file (but it&#8217;s not needed in the belonging header file) then it should be placed exclusively in the .cpp file. That can speed up the compilation significantly.</p>
 
+<p>It happens often that a programmer first implements a class in a header file and after implementation is done then he moves implementation part to .cpp file and leaves declarations in the header file. However he often forgets to move some inclusions of the header files to the .cpp file which usually leads to the longer compilation time.</p>
+
 <h2>Example</h2>
 
 <p>Let&#8217;s say that there is a function <em>convertStringToInt</em> declared in header file <strong>convert.hpp</strong> which converts some string to integer and this function is implemented in <strong>convert.cpp</strong> file. This function could be used in several places - it seems to be a quite general function.</p>
