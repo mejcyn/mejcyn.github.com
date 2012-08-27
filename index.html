@@ -81,6 +81,152 @@
   <header>
     <h1 class="entry-title">
 
+<a href="/2012/08/27/including-headers-in-cpp-file/">Including Headers in .cpp File</a>
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T19:32:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/08/27/including-headers-in-cpp-file/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>Header files which are not needed in the given header file should be removed because they slow the compilation time.</p>
+
+<p>If some header file is needed only in the .cpp file (but it&#8217;s not needed in the belonging header file) then it should be placed exclusively in the .cpp file. That can speed up the compilation significantly.</p>
+
+<h2>Example</h2>
+
+<p>Let&#8217;s say that there is a function <em>convertStringToInt</em> declared in header file <strong>convert.hpp</strong> which converts some string to integer and this function is implemented in <strong>convert.cpp</strong> file. This function could be used in several places - it seems to be a quite general function.</p>
+
+<figure class='code'><figcaption><span>convert.hpp - declaraction of convertStringToInt function</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="cp">#ifndef CONVERT_HPP</span>
+</span><span class='line'><span class="cp">#define CONVERT_HPP</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#include &lt;string&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">convertStringToInt</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">label</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="cp">#endif</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The function <em>convertStringToInt</em> uses <em>boost::lexical_cast</em> function to perform conversion. The header file <strong>lexical_cast.hpp</strong> can be included in <strong>convert.hpp</strong> header file and in <strong>convert.cpp</strong> header file (the better option).</p>
+
+<figure class='code'><figcaption><span>convert.cpp - implementation of convertStringToInt function</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="cp">#include &quot;convert.hpp&quot;</span>
+</span><span class='line'><span class="cp">#include &lt;boost/lexical_cast.hpp&gt; </span><span class="c1">// This header file should be placed here in .cpp file.</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">convertStringToInt</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">label</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">boost</span><span class="o">::</span><span class="n">lexical_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">label</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The function <em>convertStringToInt</em> is used in <strong>main.cpp</strong> file so <strong>convert.hpp</strong> header file must be included in <strong>main.cpp</strong> file.</p>
+
+<figure class='code'><figcaption><span>main.cpp - main function</span></figcaption><div class='highlight'><table><td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='c++'><span class='line'><span class="cp">#include &quot;convert.hpp&quot;</span>
+</span><span class='line'><span class="cp">#include &lt;iostream&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kt">int</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">convertStringToInt</span><span class="p">(</span><span class="s">&quot;1&quot;</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>However <strong>lexical_cast.hpp</strong> header file is only needed in the <strong>convert.cpp</strong> file (no name from <strong>lexical_cast.hpp</strong> header file is used in <strong>convert.hpp</strong> header file) so it should be placed right there. This is going to speed up the compilation time.</p>
+
+<p>Why?</p>
+
+<p>Program consists of two .cpp files - <strong>main.cpp</strong> and <strong>convert.cpp</strong>. If <strong>lexical_cast.hpp</strong> header file is included in <strong>convert.hpp</strong> file then it will be indirectly included also in <strong>main.cpp</strong> file.</p>
+
+<p>Furthermore, <strong>lexical_cast.hpp</strong> header file is included also indirectly with <strong>convert.hpp</strong> header file in <strong>convert.cpp</strong> file.</p>
+
+<p>It means that compiler have to process <strong>lexical_cast.hpp</strong> header file twice - first time for <strong>convert.cpp</strong> file and second time for <strong>main.cpp</strong> file. However compilation of <strong>lexical_cast.hpp</strong> content for <strong>main.cpp</strong> file is useless because no name from <strong>lexical_cast.hpp</strong> header file is ever used in <strong>convert.hpp</strong> header file and in <strong>main.cpp</strong> file.</p>
+
+<p>So the time can be saved when <strong>lexical_cast.hpp</strong> header file is included only in <strong>convert.cpp</strong> file.</p>
+
+<p>Compilation time comparison:</p>
+
+<p>&#49;. <strong>lexical_cast.hpp</strong> header file placed only in <strong>convert.hpp</strong> header file:</p>
+
+<pre><code>$ time for i in {1..5}; do g++ -c convert.cpp main.cpp ; done
+
+real    0m11.259s
+user    0m10.221s
+sys     0m0.704s
+</code></pre>
+
+<p>&#50;. <strong>lexical_cast.hpp</strong> header file placed only in <strong>convert.cpp</strong> file:</p>
+
+<pre><code>$ time for i in {1..5}; do g++ -c convert.cpp main.cpp ; done
+
+real    0m7.052s
+user    0m6.296s
+sys     0m0.536s
+</code></pre>
+
+<p>So it&#8217;s naturally faster when the content of <strong>lexical_cast.hpp</strong> header file is compiled only once.</p>
+</div>
+
+  <footer>
+    
+    
+  </footer>
+
+
+    </article>
+  
+    
+
+
+
+
+
+
+
+
+
+
+    <article >
+      
+  <header>
+    <h1 class="entry-title">
+
 <a href="/2012/06/24/hello-world/">Hello World</a>
 
 </h1>

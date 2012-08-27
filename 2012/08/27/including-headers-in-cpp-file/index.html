@@ -1,29 +1,110 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title><![CDATA[Mejcyn's lair]]></title>
-  <link href="http://mejcyn.github.com/atom.xml" rel="self"/>
-  <link href="http://mejcyn.github.com/"/>
-  <updated>2012-08-27T20:54:02+02:00</updated>
-  <id>http://mejcyn.github.com/</id>
-  <author>
-    <name><![CDATA[Drga Mejcyn]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Including headers in .cpp file - Mejcyn's lair</title>
+  <meta name="author" content="Drga Mejcyn">
+  <meta name="Generator" content="Jekyll & Octopress (http://octopress.org)">
 
   
-    <entry>
-      
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mejcyn.github.com/2012/08/27/including-headers-in-cpp-file/">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/octopress.min.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Mejcyn's lair" type="application/atom+xml">
+  
+
+<!--Fonts from Google's Web font directory at http://google.com/webfonts -->
+<link href='http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic' rel='stylesheet' type='text/css'>
+
+  
+
+   
+  <link href="/octopress-favicon.png" rel="icon">
+</head>
+
+<body    class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Mejcyn's lair</a></h1>
+  
+    <h2>Just another blog.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mejcyn.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
 
 
 
 
-<title type="html"><![CDATA[Including headers in .cpp file]]></title>
-<link href="http://mejcyn.github.com/2012/08/27/including-headers-in-cpp-file/"/>
-<updated>2012-08-27T19:32:00+02:00</updated>
-<id>http://mejcyn.github.com/2012/08/27/including-headers-in-cpp-file</id>
 
-      <content type="html"><![CDATA[<p>Header files which are not needed in the given header file should be removed because they slow the compilation time.</p>
+
+
+
+
+
+
+<article class="hentry " role="article">
+  
+  <header>
+    <h1 class="entry-title">
+
+Including Headers in .cpp File
+
+</h1>
+
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T19:32:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+         &bull; <a rel="bookmark" href="/2012/08/27/including-headers-in-cpp-file/">Permalink</a>
+      </p>
+    
+  </header>
+
+<div class="entry-content"><p>Header files which are not needed in the given header file should be removed because they slow the compilation time.</p>
 
 <p>If some header file is needed only in the .cpp file (but it&#8217;s not needed in the belonging header file) then it should be placed exclusively in the .cpp file. That can speed up the compilation significantly.</p>
 
@@ -119,22 +200,113 @@ sys     0m0.536s
 </code></pre>
 
 <p>So it&#8217;s naturally faster when the content of <strong>lexical_cast.hpp</strong> header file is compiled only once.</p>
-<p><a rel="bookmark" href="http://mejcyn.github.com/2012/08/27/including-headers-in-cpp-file/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
   
-    <entry>
+
+<span class="byline author vcard">Posted by <span class="fn">Drga Mejcyn</span></span>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-27T19:32:00+02:00" pubdate data-updated="true">Aug 27<span>th</span>, 2012</time>
+
+
+
+
       
 
-
-
-
-<title type="html"><![CDATA[Hello world]]></title>
-<link href="http://mejcyn.github.com/2012/06/24/hello-world/"/>
-<updated>2012-06-24T22:01:00+02:00</updated>
-<id>http://mejcyn.github.com/2012/06/24/hello-world</id>
-
-      <content type="html"><![CDATA[<p>Does it work?</p>
-<p><a rel="bookmark" href="http://mejcyn.github.com/2012/06/24/hello-world/">&#9875; Permalink</a></p>]]></content>
-    </entry>
+    </p>
+    
+      <div class="sharing">
   
-</feed>
+    
+      <a href="http://twitter.com/share" title="Tweet this" class="twitter-share" target="_blank">Tweet</a>
+    
+  
+  
+  
+  
+
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2012/06/24/hello-world/" title="Previous Post: Hello world">&laquo; Hello world</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+<section>
+  <h1>Comments</h1>
+  
+
+  
+</section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2012/08/27/including-headers-in-cpp-file/">Including headers in .cpp file</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2012/06/24/hello-world/">Hello world</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Drga Mejcyn -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+</body>
+</html>
